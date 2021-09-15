@@ -35,6 +35,33 @@ export default {
 }
 ```
 
-- home1: vue3计算属性写法
-- home2: vue2计算属性写法
-- home3: vue3 data升级
+6. 优化setup函数返回对象形式： reactive函数， toRefs函数
+- home4.vue
+```javascript
+ setup() {
+    // 返回一个响应式引用
+    const data = reactive({
+      name: "Even",
+      age: 29,
+      year: computed({
+        get() {
+          return 2021 - data.age;
+        },
+        set(val) {
+          data.age = 2021 - val;
+        },
+      }),
+    });
+    function changeAge(val) {
+      data.age += val;
+    }
+    function changeYear(val) {
+      data.year += val;
+    }
+    // 返回对象中的属性可在模板中使用
+    return { ...toRefs(data), changeAge, changeYear };
+  },
+
+```
+
+----
