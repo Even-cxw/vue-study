@@ -37,7 +37,6 @@
   - 手写diff算法
     ```javascript
     // key是节点唯一标识，告诉diff算法是否同一个dom节点 ```###如果父节点不是同一个节点，无论key变没变，都会暴力拆除所有子元素```
-    // diff算法同层比较
     > 1.[封装patch函数](https://github.com/Even8/vue-study/blob/main/vue-origin-study/write-snabbdom/snabbdom/patch.js)
     /**
      * @desc 实现diff算法比较，并将新的dom挂载dom树上；
@@ -45,6 +44,7 @@
      * @oldVnode : 老虚节点或element
      * @newVnode ：新的虚拟节点
     */
+      
     > 2.[封装createElement函数](https://github.com/Even8/vue-study/blob/main/vue-origin-study/write-snabbdom/snabbdom/patch.js)
     /**
      * @desc 创建节点

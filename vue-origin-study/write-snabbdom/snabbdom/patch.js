@@ -9,8 +9,7 @@ export function patch(oldVnode, newVnode) {
 
   // 判断oldVnode 和 newVnode 是不是同一个节点
   if(oldVnode.key == newVnode.key && oldVnode.sel == newVnode.sel) {
-   console.log('是同一个节点')
-    // 是同一个节点
+   // 新久节点是同一个节点时
   } else {
     // 不是同一个节点
     let newVnodeEle = createElement(newVnode);
