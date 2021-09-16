@@ -1,3 +1,3 @@
-export function vnode(sel,data,text,childre) {
-  return {sel,data,childre,text}
+export function vnode(sel,data,text,children,elm) {
+  return {sel,data,children,text,elm}
 }

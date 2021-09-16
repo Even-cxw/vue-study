@@ -1,7 +1,24 @@
-console.log(1111)
 import {h} from '../snabbdom/h';
-// 形态一 ``` h('div', {}, '文字')```
-// 形态一 ``` h('div', {}, [])```
-// 形态一 ``` h('div', {}, h())```
-let testh = h('div', {}, [h('a',{},[h('p',{},2)]), h('span',{},2)])
-console.log(testh)
+import {patch} from '../snabbdom/patch'
+
+// let oldVnode = h('ul', {}, [
+//   h('ol', {key: 'A'}, 1),
+//   h('ol', {key: 'B'}, 2),
+//   h('ol', {key: 'C'}, 3)
+// ])
+
+let newVnode = h('ul', {}, [
+  h('ol', {key: 'd'}, [
+    h('div', {},'nihao'),
+    h('div', {}, 'tatat')
+  ]),
+  h('ol', {key: 'B'}, '2'),
+  h('ol', {key: 'C'}, '3')
+])
+
+
+
+// let newVnode = h('ul', {key:'2'},  'wobuhao')
+
+let container = document.querySelector('#container');
+patch(container, newVnode)

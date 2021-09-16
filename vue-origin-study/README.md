@@ -4,32 +4,19 @@
   ### snabbdom介绍
   - snabbdom是著名的虚拟dom库，是diff算法的鼻祖，vue源码借鉴了snabbdom;
   > [官方git-ts版本](https://github.com/snabbdom/snabbdom)
-  #### ``snabbdom-study目录（库的引用和使用方法）``
+  > [snabbdom-study尝试使用](https://github.com/Even8/vue-study/tree/main/vue-origin-study/snabbodm-study)
   ```javascript
     npm i -D snabbdom
   ``` 
 
-  ### 手写snabbdom
-   #### ``write-snabbdom目录``
-  - h函数
-    1. h函数重载
+  ### 手写Vue源码
+  - [手写h函数代码](https://github.com/Even8/vue-study/blob/main/vue-origin-study/write-snabbdom/snabbdom/h.js)
     ```javascript
-      // 不同的参数代表不同意思，h函数支持多种传参格式
-      h('div','文字');
-      h('div',[]);
-      h('div',h());
-      h('div',{}, []); - *
-      h('div',{},'文子'); - *
-      h('div',{},h()); - *
-    ```
-    2. 手写h函数 - 写低配版h函数
-      - 大家可以尝试写三种形态分别输出以上虚拟节点
+      // 可以尝试写三种形态分别输出以下虚拟节点
         1. 形态一 ``` h('div', {}, '文字')```
         2. 形态一 ``` h('div', {}, [h('a','我是a连接'),h('span')])```
         3. 形态一 ``` h('div', {}, h())```
-      - 输出对应虚拟节点形态
-      > 难点深层嵌套h函数实现递归嵌套
-      ```javascript
+      // 输出对应虚拟节点形态
         let vnode = {
           sel: "div",, // 对应h函数第一个参数
           data: {},  // 对应h函数第二个参数，元素属性
@@ -47,6 +34,28 @@
           elm: undifined,
         }
       ```
+  - 手写diff算法
+    ```javascript
+    // key是节点唯一标识，告诉diff算法是否同一个dom节点 ```###如果父节点不是同一个节点，无论key变没变，都会暴力拆除所有子元素```
+    // diff算法同层比较
+    > 1.[封装patch函数](https://github.com/Even8/vue-study/blob/main/vue-origin-study/write-snabbdom/snabbdom/patch.js)
+    /**
+     * @desc 实现diff算法比较，并将新的dom挂载dom树上；
+     * @params {oldVnode:(object|Elemnt),newVnode:object}
+     * @oldVnode : 老虚节点或element
+     * @newVnode ：新的虚拟节点
+    */
+    > 2.[封装createElement函数](https://github.com/Even8/vue-study/blob/main/vue-origin-study/write-snabbdom/snabbdom/patch.js)
+    /**
+     * @desc 创建节点
+     * @params {vnode:{object}}
+     * @vnode ： 虚拟节点
+     * @return : Element ： 虚拟节点所有dom树；
+    */
+    ```
+
+
+
   - 什么是虚拟dom
   > 用javascript对象描述dom的层次结构，
   - diff算法比较发生在谁和谁的比较
