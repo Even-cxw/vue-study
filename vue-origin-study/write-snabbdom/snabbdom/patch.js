@@ -6,8 +6,11 @@ import {vnode} from './vnode'
 export function patch(oldVnode, newVnode) {
   // 判断传入的第一个参数是dom节点，还是虚拟节点？
   if(oldVnode.sel == '' || oldVnode.sel == undefined) {
+    // 判断是否有子节点； - 转成vnode
+    oldVnode = changeVnode(oldVnode)
+    debugger;
     // 传入的第一个参数是dom节点，此时要包装成虚拟节点 - 将原来dom保存成elm
-    oldVnode = vnode(oldVnode.tagName.toLowerCase(),{key: 'div'},undefined,[],oldVnode)
+    // oldVnode = vnode(oldVnode.tagName.toLowerCase(),{key: 'div'},undefined,[],oldVnode)
   }
   // 判断oldVnode 和 newVnode 是不是同一个节点
   if(oldVnode.data.key == newVnode.data.key && oldVnode.sel == newVnode.sel) {
@@ -31,4 +34,16 @@ export function patch(oldVnode, newVnode) {
     // 删除指定子节点
     oldVnode.elm.parentNode.removeChild(oldVnode.elm);
   }
+}
+
+function changeVnode(element) {
+  debugger;
+  let parentVnode = vnode(element.tagName.toLowerCase(),{},undefined,[],element)
+  if (element.children.length){
+    element.childNodes.forEach(item => {
+      itemVnode = changeVnode(item);
+      parentVnode.children.push(itemVnode);
+    })
+  }
+  return parentVnode;
 }
