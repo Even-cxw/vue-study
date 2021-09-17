@@ -2,7 +2,7 @@
 ## 虚拟DOM和diff算法
 
   ### snabbdom介绍
-  - snabbdom是著名的虚拟dom库，是diff算法的鼻祖，vue源码借鉴了snabbdom;
+  - snabbdom是虚拟dom库，是diff算法的鼻祖，vue源码借鉴了snabbdom;
   > [官方git-ts版本](https://github.com/snabbdom/snabbdom)
   > [snabbdom-study尝试使用](https://github.com/Even8/vue-study/tree/main/vue-origin-study/snabbodm-study)
   ```javascript
@@ -18,9 +18,9 @@
         3. 形态一 ``` h('div', {}, h())```
       // 输出对应虚拟节点形态
         let vnode = {
-          sel: "div",, // 对应h函数第一个参数
-          data: {},  // 对应h函数第二个参数，元素属性
-          childre: [
+          sel: "div",, // 标签名
+          data: {},  // 元素属性
+          children: [ // 子节点
             {
               sel: 'a',
               data:{},
@@ -28,24 +28,28 @@
               key: undifined,
               elm: undifined,
             }
-          ], // 对应h函数第三个参数
-          text: "我是一个盒子" // 对应h函数第三个参数
-          key:undifined,
-          elm: undifined,
+          ], 
+          text: "我是一个盒子" // 文本内容
+          key:undifined, // 唯一标识
+          elm: undifined, // dom
         }
       ```
   - 手写diff算法
+    - [封装patch函数](https://github.com/Even8/vue-study/blob/main/vue-origin-study/write-snabbdom/snabbdom/patch.js)
     ```javascript
     // key是节点唯一标识，告诉diff算法是否同一个dom节点 ```###如果父节点不是同一个节点，无论key变没变，都会暴力拆除所有子元素```
-    > 1.[封装patch函数](https://github.com/Even8/vue-study/blob/main/vue-origin-study/write-snabbdom/snabbdom/patch.js)
     /**
      * @desc 实现diff算法比较，并将新的dom挂载dom树上；
      * @params {oldVnode:(object|Elemnt),newVnode:object}
      * @oldVnode : 老虚节点或element
      * @newVnode ：新的虚拟节点
     */
+    
+    ```
+      - diff处理新旧节点是同一个节点时；
       
-    > 2.[封装createElement函数](https://github.com/Even8/vue-study/blob/main/vue-origin-study/write-snabbdom/snabbdom/patch.js)
+    - [封装createElement函数](https://github.com/Even8/vue-study/blob/main/vue-origin-study/write-snabbdom/snabbdom/patch.js)
+    ```javascript
     /**
      * @desc 创建节点
      * @params {vnode:{object}}

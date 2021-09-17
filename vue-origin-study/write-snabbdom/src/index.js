@@ -7,18 +7,18 @@ import {patch} from '../snabbdom/patch'
 //   h('ol', {key: 'C'}, 3)
 // ])
 
-let newVnode = h('ul', {}, [
+
+
+
+let newVnode = h('div', {key:''}, [
   h('ol', {key: 'd'}, [
     h('div', {},'nihao'),
-    h('div', {}, 'tatat')
+    h('div', {}, [h('h1',{},'我是标题')]),
   ]),
   h('ol', {key: 'B'}, '2'),
   h('ol', {key: 'C'}, '3')
 ])
+// let oldVnode = h('div', {key:'2'},  'wobuhao')
+let oldVnode = document.querySelector('#container');
 
-
-
-// let newVnode = h('ul', {key:'2'},  'wobuhao')
-
-let container = document.querySelector('#container');
-patch(container, newVnode)
+patch(oldVnode, newVnode)
