@@ -10,15 +10,11 @@ import {patch} from '../snabbdom/patch'
 
 
 
-let newVnode = h('div', {key:''}, [
-  h('ol', {key: 'd'}, [
-    h('div', {},'nihao'),
-    h('div', {}, [h('h1',{},'我是标题')]),
-  ]),
-  h('ol', {key: 'B'}, '2'),
-  h('ol', {key: 'C'}, '3')
-])
-// let oldVnode = h('div', {key:'2'},  'wobuhao')
-let oldVnode = document.querySelector('#container');
-
-patch(oldVnode, newVnode)
+let myVnode1 = h('div', {key:'1'}, '111');
+let myVnode2 = h('div', {key:'1'},  'wobuhao')
+let container = document.querySelector('#container');
+patch(container, myVnode1);
+let btn = document.getElementById('btn');
+btn.addEventListener('click', function() {
+  patch(myVnode1, myVnode2);
+})

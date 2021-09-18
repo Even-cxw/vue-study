@@ -35,6 +35,12 @@
         }
       ```
   - 手写diff算法
+    - 四种命中查找 - 四个指针；循环条件:新前小于新后，旧前小于旧后。
+      > 1 新前与旧前
+      > 2 新后与旧后
+      > 3 新后与旧前
+      > 4 新前与旧后
+      > 如果都没有命中需要循环寻找
     - [封装patch函数](https://github.com/Even8/vue-study/blob/main/vue-origin-study/write-snabbdom/snabbdom/patch.js)
     ```javascript
     // key是节点唯一标识，告诉diff算法是否同一个dom节点 ```###如果父节点不是同一个节点，无论key变没变，都会暴力拆除所有子元素```
@@ -44,7 +50,7 @@
      * @oldVnode : 老虚节点或element
      * @newVnode ：新的虚拟节点
     */
-    
+
     ```
       - diff处理新旧节点是同一个节点时；
       

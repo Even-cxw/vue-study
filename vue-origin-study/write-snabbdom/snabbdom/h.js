@@ -19,7 +19,7 @@ export function h(sel,data,c) {
   } else if (typeof c == 'object' && c.hasOwnProperty('sel')) {
     // 说明在调用h函数
     let children = [c]
-    return vnode(sel, data, undefined, children, undefined)
+    return  (sel, data, undefined, children, undefined)
   } else {
     throw new Error('传入参数错误')
   }
