@@ -1,20 +1,33 @@
-import {h} from '../snabbdom/h';
-import {patch} from '../snabbdom/patch'
+import h from '../snabbdom/h.js';
+import patch from '../snabbdom/patch.js';
 
-// let oldVnode = h('ul', {}, [
-//   h('ol', {key: 'A'}, 1),
-//   h('ol', {key: 'B'}, 2),
-//   h('ol', {key: 'C'}, 3)
-// ])
+const myVnode1 = h('ul', {}, [
+    h('li', { key: 'A' }, 'A'),
+    h('li', { key: 'B' }, 'B'),
+    h('li', { key: 'C' }, 'C'),
+    h('li', { key: 'D' }, 'D'),
+    h('li', { key: 'E' }, 'E')
+]);
 
+// 得到盒子和按钮
+const container = document.getElementById('container');
+const btn = document.getElementById('btn');
 
-
-
-let myVnode1 = h('div', {key:'1'}, '111');
-let myVnode2 = h('div', {key:'1'},  'wobuhao')
-let container = document.querySelector('#container');
+// 第一次上树
 patch(container, myVnode1);
-let btn = document.getElementById('btn');
-btn.addEventListener('click', function() {
-  patch(myVnode1, myVnode2);
-})
+
+// 新节点
+const myVnode2 = h('ul', {}, [
+    h('li', { key: 'Q' }, 'Q'),
+    h('li', { key: 'T' }, 'T'),
+    h('li', { key: 'A' }, 'A'),
+    h('li', { key: 'B' }, 'B'),
+    h('li', { key: 'Z' }, 'Z'),
+    h('li', { key: 'C' }, 'C'),
+    h('li', { key: 'D' }, 'D'),
+    h('li', { key: 'E' }, 'E')
+]);
+
+btn.onclick = function () {
+    patch(myVnode1, myVnode2);
+}
