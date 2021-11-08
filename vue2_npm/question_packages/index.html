@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>小浦聆听坊-问卷调查demo</title>
+		<!-- 引入样式 -->
+		<link rel="stylesheet" href="css/index.css">
+	</head>
+	<body>
+		<div>页面元素1</div>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<div>页面元素2</div>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<div>页面元素3</div>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<div>页面元素4</div>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<div>页面元素5</div>
+		<div class="question">插入点</div>
+		<script src="./index.js"></script>
+		<script>
+			function initQuestionPage() {
+				var question = new Question({
+					el:'.question',
+					rateTextRight: '非常满意',
+					isAnimation: false,
+					linkUrl: 'https://ttqu.spdbccc.com.cn/recon/xpltfsit/index.html',
+					confirmBtn:function(params) {
+						// 注意this指向问题，var _ = this; 在此处，不可被接口函数包裹；
+						var _ = this;
+						// 下面放到接口里，可被函数包裹；
+						_.uuid = '111'
+						_.bizSceneCode = 'XPCJ202103101036271070'
+						console.log('点击了提交按钮',_)
+					}
+				});
+			}
+			// https://ttqu.spdbccc.com.cn/recon/xpltfsit/index.html?bizSceneCode=XPCJ202104070956132400&uuid=0f2bbc95b02f4f5bb05713afcb766eb9
+		</script>
+	</body>
+</html>
