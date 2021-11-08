@@ -1,4 +1,4 @@
-## vue自我学习
+## vue学习
 
 ### vue2-npm: 编写vue2插件并上传到npm
   - vue-rate-component
