@@ -1,6 +1,3 @@
-// 从https://www.webpackjs.com/官网照着配置
-const path = require('path');
-
 module.exports = {
     // 入口
     entry: './src/index.js',
@@ -13,8 +10,8 @@ module.exports = {
     },
     devServer: {
         // 端口号
-        port: 8080,
-        // 告诉服务器从哪个目录中提供内容。
+        port: 8889,
+        // 静态资源文件夹
         contentBase: 'www'
     }
 };
