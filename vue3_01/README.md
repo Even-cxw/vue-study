@@ -63,5 +63,17 @@ export default {
   },
 
 ```
-
 ----
+
+7. 如何使用this
+```javascript
+import {getCurrentInstance} from 'vue'
+setup() {
+  const {ctx,proxy} = getCurrentInstance()
+  // ctx 代表 this
+}
+
+```
+
+8. vue3中表单失效
+- form表单中ref指向 不能与data中一样
