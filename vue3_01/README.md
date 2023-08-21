@@ -77,3 +77,28 @@ setup() {
 
 8. vue3中表单失效
 - form表单中ref指向 不能与data中一样
+### script setup使用
+```Html
+<script setup lang="ts">
+<script>
+```
+1. 如何使用生`命周期函数` \ `ref获取dom`;
+
+```vue
+<template>
+  <div>
+    <div ref="myRef">nihao</div>
+    <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
+  </div>
+</template>
+
+<script setup lang="ts">
+  import {ref,onMounted} from 'vue';
+  import HelloWorld from './components/HelloWorld.vue';
+  let myRef = ref(null);
+  onMounted(() => {
+    console.log(myRef.value)
+  })
+
+</script>
+```
